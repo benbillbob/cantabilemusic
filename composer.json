@@ -7,7 +7,8 @@
 		"silverstripe/framework": "3.6.1",
 		"silverstripe/reports": "3.6.1",
 		"silverstripe/siteconfig": "3.6.1",
-		"silverstripe-themes/simple": "3.1.*"
+		"silverstripe-themes/simple": "3.1.*",
+		"jonshutt/silverstripe-sortable-gallery-field": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/PHPUnit": "~3.7@stable"

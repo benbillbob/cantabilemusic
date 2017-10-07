@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d60e55cd6ab3a8fc210c34004d1d786",
+    "content-hash": "ec7bdad451f10ddcaaad9880c2143c8f",
     "packages": [
         {
             "name": "composer/installers",
@@ -122,6 +122,47 @@
                 "zikula"
             ],
             "time": "2017-08-09T07:53:48+00:00"
+        },
+        {
+            "name": "jonshutt/silverstripe-sortable-gallery-field",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jonshutt/SilverStripe-SortableGalleryField.git",
+                "reference": "f79b7988882888647cc551baa1919b309fab1d67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jonshutt/SilverStripe-SortableGalleryField/zipball/f79b7988882888647cc551baa1919b309fab1d67",
+                "reference": "f79b7988882888647cc551baa1919b309fab1d67",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/cms": "~3.0",
+                "silverstripe/framework": "^3.1"
+            },
+            "type": "silverstripe-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Shutt",
+                    "email": "sales@futureweb.co.nz",
+                    "role": "developer"
+                }
+            ],
+            "description": "Easily upload multiple images, and drag and drop the order",
+            "homepage": "https://github.com/jonshutt/SilverStripe-SortableGalleryField",
+            "keywords": [
+                "bulk-upload",
+                "gallery",
+                "orderable",
+                "sortable",
+                "upload"
+            ],
+            "time": "2016-02-18 07:32:40"
         },
         {
             "name": "silverstripe-themes/simple",
@@ -785,6 +826,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "jonshutt/silverstripe-sortable-gallery-field": 20,
         "phpunit/phpunit": 0
     },
     "prefer-stable": true,
