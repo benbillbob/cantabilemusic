@@ -14,4 +14,4 @@ $databaseConfig = array(
 );
 
 // Set the site locale
-i18n::set_locale('en_US');
+i18n::set_locale('en_AU');
