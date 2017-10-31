@@ -22,8 +22,8 @@
             .jssora051.jssora051dn {opacity:.5;}
             .jssora051.jssora051ds {opacity:.3;pointer-events:none;}
 	</style>
-	<div id="slider1_container" style="position: relative; top: 0px; left: 0px; right: 0px; height: 350px;">
-		<div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; right: 0px; height: 350px;">
+	<div id="slider1_container" style="position: relative; top: 0px; left: 0px; right: 0px; height: 250px;">
+		<div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; right: 0px; height: 250px;">
 			<% loop $Images %>
 			<div>
 			<% if $HTMLLink %>
