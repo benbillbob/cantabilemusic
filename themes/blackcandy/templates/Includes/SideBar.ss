@@ -1,4 +1,3 @@
-<% if Children %>
 <div id="Sidebar" class="typography">
 	<div class="sidebarBox">
 		<h3>
@@ -29,5 +28,4 @@
 	</div>
 	<div class="sidebarBottom"></div>
 </div>
-<% end_if %>	  
   

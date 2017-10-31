@@ -1,4 +1,8 @@
-<% include SideBar %>
+<div class="typography">
+	<% if Menu(2) %>
+		<% include SideBar %>
+		<div id="Content">
+	<% end_if %>
 <div class="content-container unit size3of4 lastUnit">
 	<article>
 		<% with $Event %>
@@ -6,7 +10,7 @@
 		<div class="content">$ParsedContent</div>
 		<% loop $EventTicketTypes().Sort('Sequence', ASC) %>
 			$ItemName
-			<h4>$Amount.Nice</h4>
+			<h4>$Amount.Nice
 				<form action="$FormAction" method="post"><!-- SiteConfig -->
 					<fieldset>
 						<input type="hidden" name="cmd" value="_xclick">
@@ -21,10 +25,16 @@
 						<input type="hidden" name="cancel_return" value="$CancelUrl()" /><!-- SiteConfig -->
 						<input type="submit" name="submitButton" value="$ButtonText" class="button" /><!-- Shortcode -->
 					</fieldset>
-				</form>			
+				</form>	
+</h4>				
 		<% end_loop %>
 		<% end_with %>
 	</article>
 		$Form
 		$CommentsForm
+		<div class="typography">
+	<% if Menu(2) %>
+		</div>
+	<% end_if %>
+</div>
 </div>
