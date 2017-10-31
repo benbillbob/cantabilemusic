@@ -3,7 +3,8 @@ class Invoice extends DataObject {
 	private static $db = array (
 		'TxnId' => 'Varchar',
 		'PayPalTx' => 'Varchar',
-		'Status' => 'Varchar'
+		'Status' => 'Varchar',
+		'Logs' => 'Text'		
 	);
 	
 	private static $has_one = array(

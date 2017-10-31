@@ -24,5 +24,5 @@
 			<% end_loop %>
 			</ul>
 		<% end_with %>
-		<a class="nonPrint" href="#" id="PrintButton">Print</a>
+		<h1><a class="nonPrint" href="#" id="PrintButton">Click here to print</a></h1>
 </div>

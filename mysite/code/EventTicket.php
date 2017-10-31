@@ -16,6 +16,6 @@ class EventTicket extends DataObject {
 	);
 	
 	public function Link(){
-		return $this->Event()->EventContainerPage()->Link('ticket/' . $this->ID);
+		return $this->Event()->EventContainerPage()->Link('ticket/' . $this->Barcode);
 	}
 }

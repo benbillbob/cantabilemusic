@@ -1,9 +1,8 @@
 <?php
 class InvoiceLine extends DataObject {
 	private static $db = array (
-		'Logs' => 'Varchar',
 		'Amount' => 'Currency',
-		'Quantity' => 'Int'
+		'Quantity' => 'Int'		
 	);
 	
 	private static $has_one = array(

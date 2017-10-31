@@ -101,7 +101,7 @@ class EventContainerPage_Controller extends InvoicePage_Controller
 	}
 	
 	public function ticket(SS_HTTPRequest $request) {
-		$ticket = EventTicket::get()->byID($request->param('ID'));
+		$ticket = EventTicket::get()->filter(array('Barcode' => $request->param('ID')))->first();
 		if (!$ticket){
 			return $this->httpError(404, 'Could not find ticket');
 		}

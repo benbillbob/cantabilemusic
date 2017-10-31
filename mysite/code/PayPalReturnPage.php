@@ -72,12 +72,6 @@ class PayPalReturnPage_Controller extends Page_Controller
 
 	private function getInvoiceFromPDT($sandbox)
 	{
-		$member = Member::currentUser();
-		if (!$member)
-		{
-			return "Not logged in.";
-		}
-		
 		$tx = $this->getRequest()->getVar('tx');
 		
 		$paypalPDT = new PayPalPDT();
@@ -93,14 +87,21 @@ class PayPalReturnPage_Controller extends Page_Controller
 				return $paypalPDT->getError();
 			}
 			
+
 			$invoice = $paypalPDT->getInvoiceFromResponse($response, $tx);
+			if ($invoice)
+			{
+				$invoice->Logs = $response;
+				$invoice->write();
+			}
 		}
 		
+
 		if (!$invoice)
 		{
 			return $paypalPDT->getError();
 		}
-
+		
 		return $invoice;
 	}
 }

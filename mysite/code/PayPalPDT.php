@@ -71,7 +71,8 @@ class PayPalPDT {
 	public function getInvoiceFromResponse($response, $tx)
 	{
 		$values = $this->getValues($response);
-		return $this->getInvoiceFromValues($values, $tx);
+		$invoice = $this->getInvoiceFromValues($values, $tx);
+		return $invoice;
 	}
 	
 	public function getInvoiceFromValues($values, $tx)
@@ -120,6 +121,7 @@ class PayPalPDT {
 		{
 			$invoice->PayPalTx = $tx;
 		}
+		
 		$invoice->Status = Invoice::STATUS_PROCESSING;
 		$invoice->write();		
 		
@@ -163,7 +165,7 @@ class PayPalPDT {
 		$itemName = 'item_name';
 		$itemNumber = 'item_number';
 		$itemQuantity = 'quantity';
-		$itemAmount = 'mc_gross';
+		$itemAmount = 'mc_gross_';
 		
 		$items = array();
 		if (isset($values[$itemName]))

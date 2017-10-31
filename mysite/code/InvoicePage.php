@@ -40,7 +40,6 @@ class InvoicePage_Controller extends Page_Controller
 		$invoice->TxnId = $id;
 		$invoice->Status = Invoice::STATUS_PENDING;
 		$invoice->Processed = false;
-		$invoice->MemberID = Member::currentUser()->ID;
 		$invoice->write();
 		
 		foreach ($items as $value){
@@ -68,21 +67,6 @@ class InvoicePage_Controller extends Page_Controller
 	private function createTxnId()
 	{
 		return DB::query('SELECT uuid()')->value();
-	}
-	
-	public function visibleMemberships()
-	{
-		if(Member::currentUser()->inGroup('committee-member'))
-		{		
-			return $this->Memberships()->filter(array(
-				'ParentItemId' => '0'
-			));
-		}
-
-		return $this->Memberships()->filter(array(
-			'ParentItemId' => '0',
-			'ItemNumber:StartsWith:not' => 'CT'
-		));
 	}
 }
 
