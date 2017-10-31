@@ -207,6 +207,7 @@
 	.typography img.leftAlone {
 		float: left;
 		margin-right: 100%;
+		width:538px;
 	}
 	.typography img.center {
 		float: none;
