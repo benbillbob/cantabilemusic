@@ -56,6 +56,16 @@ class Item extends DataObject {
 		'ItemNumber' => 'Item Number'
 	);
 	
+	public function Price()
+	{
+		return $this->Amount / 11 * 10;
+	}
+	
+	public function Tax()
+	{
+		return $this->Amount - $this->Price();
+	}
+
 	public function FormAction()
 	{
 		return MiniCart::get_form_action();

@@ -45,7 +45,7 @@ class MiniCartPageExtension extends DataExtension
 
     public function contentcontrollerInit($controller)
     {
-        $minicart = (Director::isDev() || Director::isTest()) ? 'minicart.js' : 'minicart.min.js';
+        $minicart = (Director::isDev() || Director::isTest()) ? 'minicart.js' : 'minicart.js';
         $config = SiteConfig::current_site_config();
         Requirements::javascript(MODULE_MINICART_DIR . '/bower_components/minicart/dist/' . $minicart);
         // $settings = MiniCart::getMiniCartConfig();

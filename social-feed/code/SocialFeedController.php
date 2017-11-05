@@ -137,7 +137,6 @@ class SocialFeedController extends DataExtension {
 		
 		// loop each post
 		foreach( $posts as $post){
-			
 			// insert into our ArrayList
 			$items->push( 
 				new ArrayData( 

@@ -10,7 +10,7 @@
 		<div class="content">$ParsedContent</div>
 		<% loop $EventTicketTypes().Sort('Sequence', ASC) %>
 			$ItemName
-			<h4>$Amount.Nice
+			<h4>$Amount.Nice inc GST
 				<form action="$FormAction" method="post"><!-- SiteConfig -->
 					<fieldset>
 						<input type="hidden" name="cmd" value="_xclick">
@@ -18,7 +18,8 @@
 						<input type="hidden" name="item_name" value="$ItemName" /><!-- Shortcode -->
 						<input type="hidden" name="item_number" value="$ItemNumber"><!-- Shortcode -->
 						<input type="hidden" name="quantity" value="1"><!-- Shortcode -->
-						<input type="hidden" name="amount" value="$Amount" /><!-- Shortcode -->
+						<input type="hidden" name="amount" value="$Price" /><!-- Shortcode -->
+						<input type="hidden" name="tax" value="$Tax" /><!-- Shortcode -->
 						<input id="Custom" type="hidden" name="custom" /><!-- Runtime -->
 						<input type="hidden" name="currency_code" value="$CurrencyCode()" /><!-- SiteConfig -->
 						<input type="hidden" name="return" value="$ReturnUrl()" /><!-- SiteConfig -->
