@@ -20,7 +20,12 @@ class InvoicePage_Controller extends Page_Controller
 			Requirements::customScript('paypal.minicart.render(' . $settings . ');', 'minicart');
 		}
 		
-		Requirements::javascript("mysite/code/CreateInvoice.js");
+		if (Permission::check('ADMIN')){
+			Requirements::javascript("mysite/code/CreateInvoiceAdmin.js");		
+		}
+		else{
+			Requirements::javascript("mysite/code/CreateInvoice.js");
+		}
 		parent::init();
 	}
 	
@@ -59,7 +64,19 @@ class InvoicePage_Controller extends Page_Controller
 			$invoiceLine->write();
 		}
 		
-		$this->getResponse()->setBody($id);
+		if (Permission::check('ADMIN')){
+			$error = $invoice->processPurchase();
+		
+			if ($error){
+				$this->Content = $error;
+				return $error;
+			}
+		
+			$this->getResponse()->setBody(EventTicket::get()->byID($invoice->EventTicketID)->Link());
+		}
+		else{
+			$this->getResponse()->setBody($id);
+		}
 
 		return $this->getResponse();
     }

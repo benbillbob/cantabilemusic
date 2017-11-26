@@ -43,7 +43,8 @@ class EventContainerPage_Controller extends InvoicePage_Controller
 		'show',
 		'events',
 		'ticket',
-		'barcode'
+		'barcode',
+		'tickets'
 	);
 	
 	public function events(SS_HTTPRequest $request) {
@@ -107,6 +108,40 @@ class EventContainerPage_Controller extends InvoicePage_Controller
 		}
 
 		return array('Ticket' => $ticket);
+	}
+	
+	public function tickets(SS_HTTPRequest $request) {
+		if (Permission::check('ADMIN')){
+			return $this->httpError(401, 'Not Authorized');
+		}
+		
+		$this->getResponse()->addHeader("Content-type", "text/plain");
+		$items = [];
+		$tickets = EventTicket::get();
+		
+		foreach($tickets as $ticket) {
+			$lines = $ticket->EventTicketLines();
+			$adult = 0;
+			$child = 0;
+			$concession = 0;
+			foreach($lines as $line){
+				$ticketType = $line->EventTicketTypeID;
+				if ($ticketType == 1){
+					$adult = $line->Quantity;
+				}
+				else if ($ticketType == 2){
+					$child = $line->Quantity;
+				}
+				else if ($ticketType == 41){
+					$concession = $line->Quantity;
+				}
+			}
+			$items[] = array('Barcode' => $ticket->Barcode, 'Adult' => $adult, 'Child' => $child, 'Concession' => $concession);
+		}
+		
+		$json = json_encode($items);
+		$this->getResponse()->setBody($json);
+		return $this->getResponse();
 	}
 }
 

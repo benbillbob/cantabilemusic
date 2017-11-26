@@ -28,6 +28,7 @@ class Event extends DataObject {
 		
 		$fields = FieldList::create(
 			TextField::create('Title'),
+			ReadOnlyField::create('Totals', 'Tickets Sold', $this->TicketsSold()),
 			ReadOnlyField::create('Fields', $insertableFieldKeys, 'Fields replaced in content'),
 			HTMLEditorField::create('Content'),
 			DateField::create('EventStartDate'),
@@ -43,6 +44,18 @@ class Event extends DataObject {
 		);
 		
 		return $fields;
+	}
+	
+	private function TicketsSold(){
+		$eventTickets = $this->EventTickets();
+		$tickets = 0;
+		foreach($eventTickets as $ticket){
+			 $eventTicketLines = $ticket->EventTicketLines();
+			 foreach($eventTicketLines as $eventTicketLine){
+				 $tickets += $eventTicketLine->Quantity;
+			 }
+		}
+		return $tickets;
 	}
 	
 	private function InsertableFields()
