@@ -111,7 +111,7 @@ class EventContainerPage_Controller extends InvoicePage_Controller
 	}
 	
 	public function tickets(SS_HTTPRequest $request) {
-		if (Permission::check('ADMIN')){
+		if (!Permission::check('ADMIN')){
 			return $this->httpError(401, 'Not Authorized');
 		}
 		
