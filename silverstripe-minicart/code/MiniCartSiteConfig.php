@@ -7,6 +7,7 @@ class MiniCartSiteConfig extends DataExtension
         'MiniCartEmail' => 'Text',
         'MiniCartCurrency' => 'Text',
 		'MiniCartPDTAuthCode' => 'Text',
+		'MiniCartTestPDTAuthCode' => 'Text',
         'MiniCartTestMode' => 'Boolean'
     );
 
@@ -24,6 +25,10 @@ class MiniCartSiteConfig extends DataExtension
         $fields->addFieldToTab(
             'Root.Minicart',
             new TextField('MiniCartPDTAuthCode', 'MiniCartPDTAuthCode')
+        );
+        $fields->addFieldToTab(
+            'Root.Minicart',
+            new TextField('MiniCartTestPDTAuthCode', 'MiniCartTestPDTAuthCode')
         );
         $fields->addFieldToTab(
             'Root.Minicart',

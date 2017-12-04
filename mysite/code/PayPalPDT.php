@@ -228,6 +228,10 @@ class PayPalPDT {
 	private function getDetailsFromPayPal($ipn, $tx, $sandbox)
 	{
 		$authToken = SiteConfig::current_site_config()->MiniCartPDTAuthCode;
+		if(SiteConfig::current_site_config()->MiniCartTestMode){
+			$authToken = SiteConfig::current_site_config()->MiniCartTestPDTAuthCode;
+		}
+
 		$response = $ipn->processTx($tx, $authToken, $sandbox);
 		return $response;
 	}

@@ -59,15 +59,16 @@ class PayPalReturnPage_Controller extends Page_Controller
 
         $response = $_POST;
 		
+		$tx = $values['txn_id'];
 		$paypalPDT = new PayPalPDT();
-
-		$invoice = $paypalPDT->getInvoiceFromValues($response);
+		
+		$invoice = $paypalPDT->getInvoiceFromValues($response, $tx);
 		if (!$invoice)
 		{
 			return $paypalPDT->getError();
 		}
 		
-		$invoice->processPurchase();
+		$processed = $invoice->processPurchase();
 	}
 
 	private function getInvoiceFromPDT($sandbox)

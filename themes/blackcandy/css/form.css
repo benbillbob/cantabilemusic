@@ -34,7 +34,6 @@ form ul {
  	margin: 15px 10px 10px 0;
 	background: #E9E9E9;
 	padding: 4px;
-	width: 306px;
 	clear: left;
 }
 	#Sidebar .middleColumn {
@@ -113,8 +112,7 @@ select {
 /* LABELS
 ---------------------------------------- */
 .typography label {
- 	display: block;
-	margin: 10px 0 -10px 0;
+ 	display: inline;
 	color: #777;
 	font-size: 12px;
 }

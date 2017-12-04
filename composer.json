@@ -11,7 +11,8 @@
 		"jonshutt/silverstripe-sortable-gallery-field": "dev-master",
 		"silverstripers/silverstripe-timefield": "dev-master",
 		"rywa/silverstripe-minicart": "^1.0",
-		"paragonie/random_compat": "^2.0"
+		"paragonie/random_compat": "^2.0",
+		"silverstripe/userforms": "^4.5"
 	},
 	"require-dev": {
 		"phpunit/PHPUnit": "~3.7@stable"

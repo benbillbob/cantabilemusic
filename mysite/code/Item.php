@@ -5,7 +5,8 @@ class Item extends DataObject {
 		'ItemNumber' => 'Varchar',
 		'Amount' => 'Currency',
 		'Sequence' => 'Int',
-		'DescriptionContent' => 'HTMLText'
+		'DescriptionContent' => 'HTMLText',
+		'HasTextOption' => 'Boolean'
 	);
 	
 	private static $indexes = array(
@@ -28,7 +29,7 @@ class Item extends DataObject {
 	}
 	
 	private static $has_one = array(
-		'MerchandiseContainerPage' => 'MerchandiseContainerPage',
+		'PurchasePage' => 'PurchasePage',
 		'ParentItem' => 'Item'
 	);
 	
@@ -42,6 +43,7 @@ class Item extends DataObject {
 			TextField::create('ItemNumber'),
 			CurrencyField::create('Amount'),
 			NumericField::create('Sequence'),
+			CheckboxField::create('HasTextOption'),
 			$parentField = DropdownField::create('ParentItemID', 'Please choose an parent item', Item::get()->filter(array('ParentItemID' => 0))->map('ID', 'ItemName', 'Please Select')),
 		    HTMLEditorField::create('DescriptionContent')
 		);
