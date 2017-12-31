@@ -8,8 +8,6 @@
 	  	<% include BreadCrumbs %>
 	<% end_if %>
 	
-		<h2>$Title</h2>
-	
 		$Content
 		<% if $ShowFacebookFeed %>
 		$SocialFeed

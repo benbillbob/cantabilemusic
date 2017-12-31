@@ -8,7 +8,6 @@
 	  	<% include BreadCrumbs %>
 	<% end_if %>
 	
-		<h2>$Title</h2>
 		<style>
 			.jssorb051 .i {position:absolute;cursor:pointer;}
             .jssorb051 .i .b {fill:#fff;fill-opacity:0.5;stroke:#000;stroke-width:400;stroke-miterlimit:10;stroke-opacity:0.5;}

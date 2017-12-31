@@ -20,7 +20,7 @@ class EditableFormHeading extends EditableFormField
     );
 
     private static $defaults = array(
-        'Level' => 3,
+        'Level' => 5,
         'HideFromReports' => false
     );
 

@@ -24,6 +24,10 @@
 				$SearchForm
 				<center><img src="themes/blackcandy/images/headersml.png" /></center>
 		    	<center><h3>$SiteConfig.Tagline</h3></center>
+				<div class="contact">
+				<a href="mailto:natalie@cantabilemusic.com.au">natalie@cantabilemusic.com.au</a><br>
+				0415 796 095
+				</div>
 			</div>
 			<div id="Navigation">
 				<% include Navigation %>

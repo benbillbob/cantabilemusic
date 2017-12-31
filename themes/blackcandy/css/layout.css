@@ -68,6 +68,11 @@ caption, th, td {
 	overflow: hidden;
 	background: #58ade1 url(../images/header.gif) repeat-x left center;
 }
+ 	#Header .contact{ 
+		float: right;
+		padding-right: 20px;
+	}
+
  	#Header h1 { 
 	  	color: #fff; 
 		font-size: 3.2em; 
