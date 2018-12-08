@@ -58,6 +58,7 @@
 		<% if $ShowFacebookFeed %>
 		$SocialFeed
 		<% end_if %>
+		$FacebookStream
 		$Form
 		$PageComments
 	<% if Menu(2) %>

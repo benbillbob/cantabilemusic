@@ -1,0 +1,35 @@
+{
+    "name": "studiobonito/silverstripe-shortcodes",
+    "description": "Adds shortcodes for inserting YouTube and Vimeo videos.",
+    "type": "silverstripe-module",
+    "keywords": [
+        "studiobonito",
+        "silverstripe-shortcodes",
+        "silverstripe",
+        "shortcodes",
+        "vimeo",
+        "youtube",
+        "video",
+        "shortcode",
+        "wysiwyg",
+        "tinymce",
+        "cms"
+    ],
+    "homepage": "https://github.com/studiobonito/silverstripe-shortcodes",
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "Tom Densham",
+            "email": "tom.densham@studiobonito.co.uk",
+            "homepage": "http://www.studiobonito.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "silverstripe/framework": ">=2.4"
+    },
+    "extra": {
+        "installer-name": "shortcodes"
+    }
+}

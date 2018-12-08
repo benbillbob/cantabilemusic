@@ -20,12 +20,13 @@ class InvoicePage_Controller extends Page_Controller
 			Requirements::customScript('paypal.minicart.render(' . $settings . ');', 'minicart');
 		}
 		
-		// if (Permission::check('ADMIN')){
-			// Requirements::javascript("mysite/code/CreateInvoiceAdmin.js");		
-		// }
-		// else{
+		if (Permission::check('ADMIN')){
+			Requirements::javascript("mysite/code/CreateInvoiceAdmin.js");		
+		}
+		else{
 			Requirements::javascript("mysite/code/CreateInvoice.js");
-		// }
+		}
+		
 		parent::init();
 	}
 	
@@ -86,6 +87,7 @@ class InvoicePage_Controller extends Page_Controller
 		if($request->param('OtherID') == 'createInvoice'){
 			return $this->createInvoice($request);
 		}
+		
 		return $this;
     }
 	

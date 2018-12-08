@@ -1,5 +1,5 @@
 <?php
-require_once('InvoicePage.php');
+require_once('InvoicePage.php'); 
 
 class EventContainerPage extends InvoicePage {
 	private static $db = array ();
@@ -96,9 +96,12 @@ class EventContainerPage_Controller extends InvoicePage_Controller
 	}
 	
 	public function barcode(SS_HTTPRequest $request) {
-		$generator = new Picqer\Barcode\BarcodeGeneratorPNG();	
-		$this->response->addHeader("Content-Type", "image/png");
-		return $generator->getBarcode($request->param('ID'), $generator::TYPE_CODE_128);
+		$code = $request->param('ID');
+		$type = "PDF417,5,1";
+
+		$barcodeobj = new TCPDF2DBarcode($code, $type);
+
+		return $barcodeobj->getBarcodePNG();
 	}
 	
 	public function ticket(SS_HTTPRequest $request) {
@@ -111,9 +114,9 @@ class EventContainerPage_Controller extends InvoicePage_Controller
 	}
 	
 	public function tickets(SS_HTTPRequest $request) {
-		if (!Permission::check('ADMIN')){
-			return $this->httpError(401, 'Not Authorized');
-		}
+		//if (!Permission::check('ADMIN')){
+		//	return $this->httpError(401, 'Not Authorized');
+		//}
 		
 		$this->getResponse()->addHeader("Content-type", "text/plain");
 		$items = [];
@@ -126,13 +129,13 @@ class EventContainerPage_Controller extends InvoicePage_Controller
 			$concession = 0;
 			foreach($lines as $line){
 				$ticketType = $line->EventTicketTypeID;
-				if ($ticketType == 1){
+				if ($ticketType == 359){
 					$adult = $line->Quantity;
 				}
-				else if ($ticketType == 2){
+				else if ($ticketType == 360){
 					$child = $line->Quantity;
 				}
-				else if ($ticketType == 41){
+				else if ($ticketType == 361){
 					$concession = $line->Quantity;
 				}
 			}

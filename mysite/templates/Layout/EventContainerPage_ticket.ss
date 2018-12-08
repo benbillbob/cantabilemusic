@@ -19,9 +19,11 @@
 			<h1>$Event.Title</h1>
 			<h1>Engadine Community Centre Auditorium</h1>
 			<h2>$Event.EventStartTime.Nice $Event.EventStartDate.Day $Event.EventStartDate.Long</h2>
+			<br>
 			<% loop $EventTicketLines %>
 				<h2>$Quantity x $EventTicketType.ItemName</h2>
 			<% end_loop %>
+			<br>
 		<% end_with %>
 		<br>
 		<h1><a class="nonPrint" href="#" id="PrintButton">Click here to print</a></h1>
