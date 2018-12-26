@@ -19,7 +19,7 @@ jQuery( document ).ready(function(){
 			data: JSON.stringify(dataToBeSent),
 			contentType: "application/json",
 			success: function(data) {
-				 var input = document.createElement('input');
+				var input = document.createElement('input');
 				input.type = 'hidden';
 				input.name = 'custom';
 				input.value = data;
@@ -27,5 +27,27 @@ jQuery( document ).ready(function(){
 				form.submit();   //Send client to the payment processor
 			}
 		});		
+	});
+	
+	function isVoucherCode(i){return i.key == 'Voucher Code';}
+	
+	paypal.minicart.cart.on('add', function (idx, product, isExisting) {
+		if (!isExisting){
+			var code = product.options().find(isVoucherCode);
+			if (code){
+				if (code.value){
+					var discountAmount = product.get('voucherDiscount');
+					if (discountAmount){
+						var amount = product.get('amount')
+						var tax = product.get('tax')
+						var total = parseFloat(amount) + parseFloat(tax)
+						total = total - discountAmount
+						total = total / 11 * 10
+						total = total.toFixed(2)
+						product.set('amount', total)
+					}
+				}
+			}
+		}
 	});
 });

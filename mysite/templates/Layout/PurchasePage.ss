@@ -16,8 +16,13 @@
 						<h3>$ItemName</h3>
 						<% if $HasTextOption %>
 						<p>
-						<input type="hidden" name="on0" value="Child's Name"><h5>Child's Name</h5>
+						<input type="hidden" name="on0" value="$TextOptionCaption"><h5>$TextOptionCaption</h5>
 						<input type="text" name="os0" maxlength="200" required>
+						<% if $HasTextOption2 %>
+						<input type="hidden" name="on1" value="$TextOption2Caption"><h5>$TextOption2Caption</h5>
+						<input type="text" name="os1" maxlength="200">
+						<input type="hidden" name="voucherDiscount" value="$DiscountAmount">
+						<% end_if %>
 						</p>
 						<% end_if %>
 						</td>

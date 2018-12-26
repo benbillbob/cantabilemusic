@@ -6,7 +6,11 @@ class Item extends DataObject {
 		'Amount' => 'Currency',
 		'Sequence' => 'Int',
 		'DescriptionContent' => 'HTMLText',
-		'HasTextOption' => 'Boolean'
+		'HasTextOption' => 'Boolean',
+		'HasTextOption2' => 'Boolean',
+		'TextOptionCaption' => 'Varchar',
+		'TextOption2Caption' => 'Varchar',
+		'DiscountAmount' => 'Currency'
 	);
 	
 	private static $indexes = array(
@@ -44,6 +48,10 @@ class Item extends DataObject {
 			CurrencyField::create('Amount'),
 			NumericField::create('Sequence'),
 			CheckboxField::create('HasTextOption'),
+			TextField::create('TextOptionCaption'),
+			CheckboxField::create('HasTextOption2'),
+			TextField::create('TextOption2Caption'),
+			TextField::create('DiscountAmount'),
 			$parentField = DropdownField::create('ParentItemID', 'Please choose an parent item', Item::get()->filter(array('ParentItemID' => 0))->map('ID', 'ItemName', 'Please Select')),
 		    HTMLEditorField::create('DescriptionContent')
 		);
