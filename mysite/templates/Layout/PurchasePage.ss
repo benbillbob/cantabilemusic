@@ -18,9 +18,9 @@
 						<p>
 						<input type="hidden" name="on0" value="$TextOptionCaption"><h5>$TextOptionCaption</h5>
 						<input type="text" name="os0" maxlength="200" required>
-						<% if $HasTextOption2 %>
-						<input type="hidden" name="on1" value="$TextOption2Caption"><h5>$TextOption2Caption</h5>
-						<input type="text" name="os1" maxlength="200">
+						<% if $DiscountAmount %>
+						<p><input type="hidden" name="on1" value="Use Creative Kids Voucher"></p>
+						<p><label><input type="checkbox" name="os1" value="Use Creative Kids Voucher">Use Creative Kids Voucher</label></p>
 						<input type="hidden" name="voucherDiscount" value="$DiscountAmount">
 						<% end_if %>
 						</p>

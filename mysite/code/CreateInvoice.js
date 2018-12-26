@@ -29,7 +29,7 @@ jQuery( document ).ready(function(){
 		});		
 	});
 	
-	function isVoucherCode(i){return i.key == 'Voucher Code';}
+	function isVoucherCode(i){return i.key == 'Use Creative Kids Voucher';}
 	
 	paypal.minicart.cart.on('add', function (idx, product, isExisting) {
 		if (!isExisting){
