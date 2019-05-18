@@ -27,7 +27,12 @@
 						<% end_if %>
 						</td>
 						<td>
-						<h5>$Amount.Nice<br>inc GST</h5>				
+						<h5>Full Price</h5>
+						<h6>$Amount.Nice<br>inc GST</h6>	 			
+						<% if $DiscountAmount %>
+						<h5>With Creative Kids Voucher</h5>
+						<h6>$DiscountedPrice<br>inc GST</h6>				
+						<% end_if %>
 						<input type="hidden" name="cmd" value="_xclick">
 						<input type="hidden" name="business" value="$Business()" /><!-- SiteConfig -->
 						<input type="hidden" name="item_name" value="$ItemName" /><!-- Shortcode -->

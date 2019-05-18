@@ -71,6 +71,11 @@ class Item extends DataObject {
 		return $this->Amount / 11 * 10;
 	}
 	
+	public function DiscountedPrice()
+	{
+		return '$' . money_format('%.2n', $this->Amount - $this->DiscountAmount);
+	}
+	
 	public function Tax()
 	{
 		return $this->Amount - $this->Price();

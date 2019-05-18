@@ -38,13 +38,16 @@ jQuery( document ).ready(function(){
 				if (code.value){
 					var discountAmount = product.get('voucherDiscount');
 					if (discountAmount){
-						var amount = product.get('amount')
-						var tax = product.get('tax')
-						var total = parseFloat(amount) + parseFloat(tax)
-						total = total - discountAmount
-						total = total / 11 * 10
-						total = total.toFixed(2)
-						product.set('amount', total)
+						var amount = product.get('amount');
+						var tax = product.get('tax');
+						var total = parseFloat(amount) + parseFloat(tax);
+						total = total - discountAmount;
+						tax = (total / 11).toFixed(2);
+						total = total - tax;
+						total = total.toFixed(2);
+						product.set('amount', total);
+						product._tax = tax;
+						product.set('tax', tax);
 					}
 				}
 			}
