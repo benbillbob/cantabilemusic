@@ -743,11 +743,11 @@ JS
             Session::clear('FormProcessed');
         }
 
-		if ($this->FinishPage()){
-			$link = $this->FinishPage()->Link().'info/'.$this->ID;
-			$this->redirect($link);
-			return;
-		}
+		//if ($this->FinishPage()){
+		//	$link = $this->FinishPage()->Link().'info/'.$this->ID;
+		//	$this->redirect($link);
+		//	return;
+		//}
 		
 		$data = array(
                 'Submission' => $submission,

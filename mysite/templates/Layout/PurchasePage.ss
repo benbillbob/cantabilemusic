@@ -18,18 +18,28 @@
 						<p>
 						<input type="hidden" name="on0" value="$TextOptionCaption"><h5>$TextOptionCaption</h5>
 						<input type="text" name="os0" maxlength="200" required>
-						<% if $DiscountAmount %>
-						<p><input type="hidden" name="on1" value="Use Creative Kids Voucher"></p>
-						<p><label><input type="checkbox" name="os1" value="Use Creative Kids Voucher">Use Creative Kids Voucher</label></p>
-						<input type="hidden" name="voucherDiscount" value="$DiscountAmount">
-						<% end_if %>
 						</p>
+						<% end_if %>
+						<% if $HasTextOption2 %>
+						<p>
+						<input type="hidden" name="on1" value="$TextOption2Caption"><h5>$TextOption2Caption</h5>
+						<input type="text" name="os1" maxlength="200" required>
+						</p>
+						<% end_if %>
+						<% if $DiscountAmount > "0" %>
+						<p><input type="hidden" name="on2" value="Use Creative Kids Voucher"></p>
+						<p><label><input type="checkbox" name="os2" value="Use Creative Kids Voucher">Use Creative Kids Voucher</label></p>
+						<input type="hidden" name="voucherDiscount" value="$DiscountAmount"></p>
 						<% end_if %>
 						</td>
 						<td>
+						<% if $DiscountAmount > "0" %>
 						<h5>Full Price</h5>
+						<% else %>
+						<h5>Price</h5>
+						<% end_if %>
 						<h6>$Amount.Nice<br>inc GST</h6>	 			
-						<% if $DiscountAmount %>
+						<% if $DiscountAmount > "0" %>
 						<h5>With Creative Kids Voucher</h5>
 						<h6>$DiscountedPrice<br>inc GST</h6>				
 						<% end_if %>

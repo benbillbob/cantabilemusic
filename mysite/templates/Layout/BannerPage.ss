@@ -55,9 +55,6 @@
 		</div>
 	</div>
 		$Content
-		<% if $ShowFacebookFeed %>
-		$SocialFeed
-		<% end_if %>
 		$FacebookStream
 		$Form
 		$PageComments
