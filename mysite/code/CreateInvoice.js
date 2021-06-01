@@ -29,28 +29,48 @@ jQuery( document ).ready(function(){
 		});		
 	});
 	
-	function isVoucherCode(i){return i.key == 'Use Creative Kids Voucher';}
+	function isVoucherCode(i){return i.key.indexOf('Voucher') > 0;}
+	function isRateDiscount(i){return i.key == 'Re enrol discount';}
 	
 	paypal.minicart.cart.on('add', function (idx, product, isExisting) {
 		if (!isExisting){
-			var code = product.options().find(isVoucherCode);
-			if (code){
-				if (code.value){
-					var discountAmount = product.get('voucherDiscount');
-					if (discountAmount){
-						var amount = product.get('amount');
-						var tax = product.get('tax');
-						var total = parseFloat(amount) + parseFloat(tax);
-						total = total - discountAmount;
-						tax = (total / 11).toFixed(2);
-						total = total - tax;
-						total = total.toFixed(2);
-						product.set('amount', total);
-						product._tax = tax;
-						product.set('tax', tax);
+			var amount = product.get('amount');
+			var tax = product.get('tax');
+			var total = parseFloat(amount) + parseFloat(tax);
+
+			var rate = product.options().find(isRateDiscount);
+			if (rate){
+				if (rate.value){
+					var discountRate = product.get('voucherDiscountRate');
+					if (discountRate){
+						total = total - total * (discountRate / 100);
 					}
 				}
 			}
+
+			if (!this.items().some(item => item._data.discountApplied))
+			{
+				var code = product.options().find(isVoucherCode);
+				if (code){
+					if (code.value){
+						var discountAmount = product.get('voucherDiscount');
+						if (discountAmount){
+							total = total - discountAmount;
+							product.set('discountApplied', true);
+						}
+					}
+					else {
+						code.value = false;
+					}
+				}
+			}
+			
+			tax = (total / 11).toFixed(2);
+			total = total - tax;
+			total = total.toFixed(2);
+			product.set('amount', total);
+			product._tax = tax;
+			product.set('tax', tax);
 		}
 	});
 });

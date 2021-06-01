@@ -10,7 +10,8 @@ class Item extends DataObject {
 		'HasTextOption2' => 'Boolean',
 		'TextOptionCaption' => 'Varchar',
 		'TextOption2Caption' => 'Varchar',
-		'DiscountAmount' => 'Currency'
+		'DiscountAmount' => 'Currency',
+		'DiscountPercentage' => 'Int'
 	);
 	
 	private static $indexes = array(
@@ -52,6 +53,7 @@ class Item extends DataObject {
 			CheckboxField::create('HasTextOption2'),
 			TextField::create('TextOption2Caption'),
 			TextField::create('DiscountAmount'),
+			TextField::create('DiscountPercentage'),
 			$parentField = DropdownField::create('ParentItemID', 'Please choose an parent item', Item::get()->filter(array('ParentItemID' => 0))->map('ID', 'ItemName', 'Please Select')),
 		    HTMLEditorField::create('DescriptionContent')
 		);
@@ -73,7 +75,16 @@ class Item extends DataObject {
 	
 	public function DiscountedPrice()
 	{
-		return '$' . money_format('%.2n', $this->Amount - $this->DiscountAmount);
+		$discounted = $this->Amount;
+		if ($this->DiscountAmount > 0)
+		{
+			$discounted = discounted - $this->DiscountAmount;
+		}
+		if ($this->DiscountPercentage > 0)
+		{
+			$discounted = discounted - (discounted * $this->DiscountPercentage / 100);
+		}
+		return '$' . money_format('%.2n', discounted);
 	}
 	
 	public function Tax()

@@ -20,29 +20,28 @@
 						<input type="text" name="os0" maxlength="200" required>
 						</p>
 						<% end_if %>
-						<% if $HasTextOption2 %>
-						<p>
-						<input type="hidden" name="on1" value="$TextOption2Caption"><h5>$TextOption2Caption</h5>
-						<input type="text" name="os1" maxlength="200" required>
-						</p>
+						<% if $DiscountPercentage > "0" %>
+							<p><input type="hidden" name="on1" value="Re enrol discount"></p>
+							<p><label><input type="checkbox" name="os1" value="true">Returning student COVID credit (25% discount)</label></p>
+							<input type="hidden" name="voucherDiscountRate" value="$DiscountPercentage"></p>
 						<% end_if %>
 						<% if $DiscountAmount > "0" %>
-						<p><input type="hidden" name="on2" value="Use Creative Kids Voucher"></p>
-						<p><label><input type="checkbox" name="os2" value="Use Creative Kids Voucher">Use Creative Kids Voucher</label></p>
-						<input type="hidden" name="voucherDiscount" value="$DiscountAmount"></p>
+							<p><input type="hidden" name="on2" value="Use Creative Kids Voucher"></p>
+							<p><label><input type="checkbox" name="os2" value="Use Creative Kids Voucher">Use $100 Creative Kids Voucher</label></p>
+							<h5>Please forward the Creative Kids Voucher to <a href="mailto:natalie@cantabilemusic.com.au?subject=Creative%20Kids%20Voucher">natalie@cantabilemusic.com.au</a></h5>
+							<input type="hidden" name="voucherDiscount" value="$DiscountAmount"></p>
+						<% if $HasTextOption2 %>
+							<p>
+							<input type="hidden" name="on3" value="$TextOption2Caption"><h5>$TextOption2Caption</h5>
+							<input type="text" name="os3" maxlength="200">
+							</p>
+						<% end_if %>
 						<% end_if %>
 						</td>
 						<td>
-						<% if $DiscountAmount > "0" %>
 						<h5>Full Price</h5>
-						<% else %>
-						<h5>Price</h5>
-						<% end_if %>
-						<h6>$Amount.Nice<br>inc GST</h6>	 			
-						<% if $DiscountAmount > "0" %>
-						<h5>With Creative Kids Voucher</h5>
-						<h6>$DiscountedPrice<br>inc GST</h6>				
-						<% end_if %>
+						<h6>$Amount.Nice<br>inc GST</h6>
+						<h7>Discounts will be applied when you press "Buy Now"</H7><br><br>
 						<input type="hidden" name="cmd" value="_xclick">
 						<input type="hidden" name="business" value="$Business()" /><!-- SiteConfig -->
 						<input type="hidden" name="item_name" value="$ItemName" /><!-- Shortcode -->
@@ -56,8 +55,8 @@
 						<input type="submit" name="submitButton" value="$ButtonText" class="button" /><!-- Shortcode -->
 						</td>
 					</fieldset>
-		</tr>
 		</form>	
+		</tr>
 		<% end_loop %>
 		</table>
 	</article>
