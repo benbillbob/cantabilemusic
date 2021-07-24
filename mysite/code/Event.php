@@ -47,15 +47,17 @@ class Event extends DataObject {
 	}
 	
 	private function TicketsSold(){
-		$eventTickets = $this->EventTickets();
+		$eventTicketTypes = $this->EventTicketTypes();
 		$tickets = 0;
-		foreach($eventTickets as $ticket){
-			 $eventTicketLines = $ticket->EventTicketLines();
-			 foreach($eventTicketLines as $eventTicketLine){
-				 $tickets += $eventTicketLine->Quantity;
-			 }
+		$breakdown = '';
+		
+		foreach($eventTicketTypes as $ticketType){
+			 $eventTicketLines = $ticketType->EventTicketLines();
+			 $ticketTypeTotal = $eventTicketLines->sum('Quantity');
+			 $breakdown = $breakdown . $ticketType->ItemName . ' - ' . $ticketTypeTotal . ' ';
+			 $tickets += $ticketTypeTotal;
 		}
-		return $tickets;
+		return $breakdown . ' - Total: ' . $tickets;
 	}
 	
 	private function InsertableFields()

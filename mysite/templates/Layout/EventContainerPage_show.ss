@@ -10,7 +10,7 @@
 		<div class="content">$ParsedContent</div>
 		<% if $OnSaleNow() %>
 		<% loop $EventTicketTypes().Sort('Sequence', ASC) %>
-			$ItemName
+			<h2>$ItemName</h2>
 			<h4>$Amount.Nice inc GST
 				<form action="$FormAction" method="post"><!-- SiteConfig -->
 					<fieldset>
@@ -34,11 +34,10 @@
 								<input type="text" name="os1" maxlength="200"/>
 								</p>
 							<% end_if %>
-							<h5>Please also forward the Discover NSW Voucher to <a href="mailto:natalie@cantabilemusic.com.au?subject=Discover%20NSW%20Voucher">natalie@cantabilemusic.com.au</a></h5>
 							<input type="hidden" name="voucherDiscount" value="$DiscountAmount"/></p>
 						<% end_if %>
 						<input type="submit" name="submitButton" value="$ButtonText" class="button" /><!-- Shortcode -->
-						
+						<p>Press "Buy Now" again to add multiple tickets</p>
 					</fieldset>
 				</form>	
 </h4>				
